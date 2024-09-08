@@ -13,7 +13,9 @@ export const setupServer = () => {
 
   app.use(express.json());
   const cors = require('cors');
-  app.use(cors());
+  app.use(cors({
+    origin: env("FRONTEND_DOMAIN")
+  }));
 
   app.use('/users', userRouter);
   app.use('/contacts', contactRouter);
